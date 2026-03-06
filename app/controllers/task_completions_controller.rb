@@ -4,11 +4,11 @@ class TaskCompletionsController < ApplicationController
   def index
     @tasks = Task.all
 
-    today = Date.today
+    today = Date.current
 
     # tasks já completadas hoje
     @completions_today = TaskCompletion
-                           .where(date: Date.today)
+                           .where(date: Date.current)
                            .index_by(&:task_id)
     # score de hoje
     @today_score = TaskCompletion
@@ -25,7 +25,7 @@ class TaskCompletionsController < ApplicationController
   def create
     @task_completion = TaskCompletion.find_or_create_by(
       task_id: params[:task_id],
-      date: Date.today
+      date: Date.current
     )
 
     redirect_to root_path
