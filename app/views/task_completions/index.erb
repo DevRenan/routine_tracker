@@ -1,0 +1,79 @@
+<div class="max-w-md mx-auto mt-8 p-4">
+
+  <h1 class="text-2xl font-bold mb-2">
+    Rotina — <%= Date.today.strftime("%d/%m") %>
+  </h1>
+
+  <p class="mb-3">
+    Score: <strong><%= @today_score %> / <%= @tasks.sum(&:score) %></strong>
+  </p>
+
+  <div class="w-full bg-gray-200 rounded mb-6">
+    <div
+        class="bg-blue-500 text-xs text-white text-center p-1 rounded"
+        style="width:<%= (@today_score.to_f / @tasks.sum(&:score) * 100).round %>%">
+    </div>
+  </div>
+
+  <div class="space-y-3">
+    <% @tasks.each do |task| %>
+
+      <% completion = @completions_today[task.id] %>
+
+      <% if completion %>
+
+        <form action="/task_completions/<%= completion.id %>" method="post">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :_method, "delete" %>
+
+      <% else %>
+
+        <form action="/task_completions" method="post">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= hidden_field_tag :task_id, task.id %>
+
+      <% end %>
+
+      <label class="flex items-center gap-4 p-3 border rounded-lg cursor-pointer">
+
+        <input
+          type="checkbox"
+          class="h-7 w-7"
+          <%= "checked" if completion %>
+          onchange="this.form.submit()">
+
+        <span class="text-lg flex-1">
+          <%= task.name %>
+        </span>
+
+        <span class="text-sm text-gray-500">
+          +<%= task.score %>
+        </span>
+
+      </label>
+
+      </form>
+
+    <% end %>
+  </div>
+
+  <h2 class="text-xl font-semibold mt-8 mb-3">Evolução</h2>
+
+  <canvas id="chart"></canvas>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    new Chart(document.getElementById("chart"), {
+        type: "line",
+        data: {
+            labels: <%= @score_by_day.keys.map{|d| d.strftime("%d/%m")}.to_json.html_safe %>,
+            datasets: [{
+                label: "Score",
+                data: <%= @score_by_day.values.to_json.html_safe %>
+            }]
+        }
+    })
+</script>
