@@ -170,7 +170,7 @@ tasks = [
   "1 hora focado de trabalho/estudo",
   "1 hora descanso (sem celular e sem computador)",
   "1 hora para atividades extras (Cuidado da casa ou resolver pendências)",
-  "1 hora hobby (atividade lúdica sem telas)"
+  "1 hora hobby (atividade manual sem telas)"
 ]
 
 tasks.each do |task_name|
