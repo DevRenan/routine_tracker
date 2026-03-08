@@ -160,4 +160,23 @@ workout_d = Fitness::Workout.create!(name: "D – Ombro + Core")
   )
 end
 
+tasks = [
+  "1 hora de alongamento e preparação para começar o dia",
+  "1 boa refeição de café da manhã",
+  "1 boa refeição de almoço",
+  "1 boa refeição jantar",
+  "1 Treino de cardio ou musculação",
+  "1 hora focado de trabalho/estudo",
+  "1 hora focado de trabalho/estudo",
+  "1 hora descanso (sem celular e sem computador)",
+  "1 hora para atividades extras (Cuidado da casa ou resolver pendências)",
+  "1 hora hobby (atividade lúdica sem telas)"
+]
+
+tasks.each do |task_name|
+  Task.find_or_create_by!(name: task_name) do |task|
+    task.score = 1
+  end
+end
+
 puts "Seeds carregados com sucesso 💪"
