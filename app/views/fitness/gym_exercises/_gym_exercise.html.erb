@@ -1,0 +1,22 @@
+<div id="<%= dom_id gym_exercise %>">
+  <div>
+    <strong>Name:</strong>
+    <%= gym_exercise.name %>
+  </div>
+
+  <div>
+    <strong>Description:</strong>
+    <%= gym_exercise.description %>
+  </div>
+
+  <div>
+    <strong>Url video:</strong>
+    <%=link_to "Assista", gym_exercise.url_video, target: "_blank" if gym_exercise.url_video.present?  %>
+  </div>
+
+  <div>
+    <strong>Muscle group:</strong>
+    <%= gym_exercise.muscle_group %>
+  </div>
+
+</div>

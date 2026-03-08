@@ -1,0 +1,23 @@
+<h2>Exercises</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Exercise</th>
+    <th>Sets</th>
+    <th>Reps</th>
+    <th>Rest</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @workout_exercises.each do |we| %>
+    <tr>
+      <td><%= we.gym_exercise.name %></td>
+      <td><%= we.sets %></td>
+      <td><%= we.reps %></td>
+      <td><%= we.rest_seconds %>s</td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

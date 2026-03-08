@@ -1,0 +1,2 @@
+module Fitness::WorkoutExercisesHelper
+end

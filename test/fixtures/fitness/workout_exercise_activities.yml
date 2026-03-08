@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workout_activity: one
+  workout_exercise: one
+  gym_exercise: one
+  notes: MyText
+
+two:
+  workout_activity: two
+  workout_exercise: two
+  gym_exercise: two
+  notes: MyText

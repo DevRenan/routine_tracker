@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: routine-tracker
+    runtime: ruby
+    plan: free
+    buildCommand: |
+      bundle install
+      bundle exec rails assets:precompile
+      bundle exec rails assets:clean
+    startCommand: |
+      bundle exec rails db:prepare
+      bundle exec rails server -b 0.0.0.0 -p $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: routine-tracker-db
+          property: connectionString
+
+databases:
+  - name: routine-tracker-db
+    plan: free

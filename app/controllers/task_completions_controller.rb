@@ -21,6 +21,15 @@ class TaskCompletionsController < ApplicationController
                       .joins(:task)
                       .group(:date)
                       .sum("tasks.score")
+
+    @total_score = @tasks.sum(&:score)
+
+    @progress =
+      if @total_score > 0
+        ((@today_score.to_f / @total_score) * 100).round
+      else
+        0
+      end
   end
   def create
     @task_completion = TaskCompletion.find_or_create_by(

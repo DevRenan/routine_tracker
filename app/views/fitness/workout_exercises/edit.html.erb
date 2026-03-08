@@ -1,0 +1,12 @@
+<% content_for :title, "Editing workout exercise" %>
+
+<h1>Editing workout exercise</h1>
+
+<%= render "form", fitness_workout_exercise: @fitness_workout_exercise %>
+
+<br>
+
+<div>
+  <%= link_to "Show this workout exercise", @fitness_workout_exercise %> |
+  <%= link_to "Back to workout exercises", fitness_workout_exercises_path %>
+</div>

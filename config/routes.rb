@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :fitness do
+    resources :exercise_sets
+    resources :workout_exercise_activities
+    resources :workout_activities
+    resources :workout_exercises
+    resources :workouts
+    resources :gym_exercises
+  end
 
   root "task_completions#index"
   resources :tasks

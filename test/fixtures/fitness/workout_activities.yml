@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workout: one
+  started_at: 2026-03-07 17:48:54
+  finished_at: 2026-03-07 17:48:54
+  calories: 1
+  notes: MyText
+
+two:
+  workout: two
+  started_at: 2026-03-07 17:48:54
+  finished_at: 2026-03-07 17:48:54
+  calories: 1
+  notes: MyText
